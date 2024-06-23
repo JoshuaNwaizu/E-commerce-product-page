@@ -10,17 +10,20 @@ const NavBar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 ">
+    <header className="fixed top-0 left-0 right-0 z-10 bg-[#fff]">
       <nav className="flex flex-row items-center justify-between mx-5 h-[5rem]">
         <div className="flex flex-row gap-4 r">
-          <span onClick={handleToggleNav}>
+          <span
+            className="cursor-pointer"
+            onClick={handleToggleNav}
+          >
             <img
               src="/assets/icon-menu.svg"
               alt="menu"
-              className="w-[1.3rem]"
+              className="w-[1.3rem] cursor-pointer"
             />
           </span>
-          <span>
+          <span className="cursor-pointer">
             <img
               src="/assets/logo.svg"
               alt="logo"
@@ -41,7 +44,7 @@ const NavBar = () => {
                   <img
                     src="/assets/icon-close.svg"
                     alt="Icon close"
-                    className=""
+                    className="cursor-pointer"
                   />
                 </span>
                 <ul className="flex flex-col gap-5">

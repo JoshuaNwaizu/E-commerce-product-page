@@ -1,9 +1,9 @@
-interface showData {
+interface Shoes {
     image: string
     alt: string
 }
 
-const SHOE_DATA:showData[] = [{
-    image: '',
-    alt: ''
-}]
+const IMAGES_DATA:Shoes[] = [
+
+
+]
