@@ -1,4 +1,5 @@
 import ImageDisplay from './components/ImageDisplay';
+import Info from './components/Info';
 import NavBar from './components/NavBar';
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
     <main>
       <NavBar />
       <ImageDisplay />
+      <Info />
     </main>
   );
 };
