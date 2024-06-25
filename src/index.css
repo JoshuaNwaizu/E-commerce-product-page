@@ -4,14 +4,15 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Kumbh Sans", sans-serif;  line-height: 1.5;
+  font-family: "Kumbh Sans", sans-serif; 
   font-weight: 400;
-
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 

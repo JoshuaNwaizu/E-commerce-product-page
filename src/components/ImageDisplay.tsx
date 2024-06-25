@@ -1,5 +1,3 @@
-// import { useState } from 'react';
-
 import { useReducer } from 'react';
 import { IMAGES_DATA } from '../shoes';
 
@@ -19,33 +17,37 @@ const reducer: React.Reducer<NavigateState, NavigateAction> = (
 ) => {
   switch (action.type) {
     case 'FORWARD_NAV':
-      return { ...state, navigate: Math.min(state.navigate + 1, 3) };
+      return { ...state, navigate: state.navigate + 1 };
 
     case 'BACKWARD_NAV':
-      return { ...state, navigate: Math.max(state.navigate - 1, 0) };
+      return { ...state, navigate: state.navigate - 1 };
     default:
-      console.log('Err');
+      console.error('Err');
       return state;
   }
 };
 
 const ImageDisplay = () => {
-  // const [isNavigate, setIsNavigate] = useState<number>(0);
-
   const [state, dispatch] = useReducer(reducer, initialState);
   const { navigate } = state;
 
   const shoeData = IMAGES_DATA[navigate];
 
-  // const handlePrev = () => {
-  //   dispatch({ type: 'BACKWARD_NAV' });
+  const handleForward = () => {
+    dispatch({ type: 'FORWARD_NAV' });
 
-  //   console.log('Previous');
-  // };
-  // const handleNext = () => {
-  //   dispatch({ type: 'FORWARD_NAV' });
-  //   console.log('next');
-  // };
+    if (state.navigate === 3) {
+      state.navigate = navigate - 4;
+    }
+  };
+
+  const handleBackward = () => {
+    dispatch({ type: 'BACKWARD_NAV' });
+
+    if (state.navigate === 0) {
+      state.navigate = navigate + 4;
+    }
+  };
 
   return (
     <section className="mt-[3.5rem] relative">
@@ -58,8 +60,8 @@ const ImageDisplay = () => {
       </figure>
       <div className="flex absolute top-[44%] items-center justify-between w-[100svw] px-4">
         <button
-          className="bg-[white] px-[1.2rem] py-[1.05rem] rounded-full"
-          onClick={() => dispatch({ type: 'BACKWARD_NAV' })}
+          className="bg-[white] px-[1rem] py-[.9rem] rounded-full"
+          onClick={handleBackward}
         >
           <img
             src="/assets/icon-previous.svg"
@@ -68,8 +70,8 @@ const ImageDisplay = () => {
           />
         </button>
         <button
-          className="bg-[white] px-[1.2rem] py-[1.05rem] rounded-full"
-          onClick={() => dispatch({ type: 'FORWARD_NAV' })}
+          className="bg-[white] px-[1rem] py-[.9rem] rounded-full"
+          onClick={handleForward}
         >
           <img
             src="/assets/icon-next.svg"
