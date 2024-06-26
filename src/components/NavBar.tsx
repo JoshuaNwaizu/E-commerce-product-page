@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const navList: string[] = ['Collections', 'Men', 'Women', 'About', 'Contact'];
 
-const NavBar = () => {
+type CartOpen = {
+  handleCartOpen: () => void;
+};
+const NavBar: React.FC<CartOpen> = ({ handleCartOpen }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleToggleNav = () => {
@@ -35,7 +38,7 @@ const NavBar = () => {
             }`}
           >
             <div
-              className={`absolute bg-[#fff] w-[70svw] left-0 top-0 h-[100svh] flex flex-col transition-all duration-300 ${
+              className={`absolute bg-[#fff] w-[70svw] left-0 top-0 h-[100svh]  flex flex-col transition-all duration-300 ${
                 isOpen ? 'left-0' : 'left-[-100%]'
               }`}
             >
@@ -62,10 +65,12 @@ const NavBar = () => {
           </div>
         </div>
         <div className="flex items-center gap-5">
-          <img
-            src="/assets/icon-cart.svg"
-            alt="cart logo"
-          />
+          <span onClick={handleCartOpen}>
+            <img
+              src="/assets/icon-cart.svg"
+              alt="cart logo"
+            />
+          </span>
           <img
             src="/assets/image-avatar.png"
             alt="Avatar image"
