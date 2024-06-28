@@ -1,15 +1,9 @@
-import { useState } from 'react';
 import Button from './Button';
+import { useShoes } from '../contexts/ShoeContext';
 
 const Info = () => {
-  const [itemCount, setItemCount] = useState<number>(0);
+  const { count, handleItemAdd, handleItemMinus, handleAddCart } = useShoes();
 
-  const handleItemAdd = () => {
-    setItemCount((count) => count + 1);
-  };
-  const handleItemMinus = () => {
-    setItemCount((count) => Math.max(count - 1, 0));
-  };
   return (
     <section className="mx-6 my-[2rem]">
       <article className="flex flex-col gap-6">
@@ -49,7 +43,7 @@ const Info = () => {
                 alt="minus icon"
               />
             </button>
-            <span className="font-bold text-[1.1rem]">{itemCount}</span>
+            <span className="font-bold text-[1.1rem]">{count}</span>
             <button
               onClick={handleItemAdd}
               className="p-2"
@@ -60,7 +54,10 @@ const Info = () => {
               />
             </button>
           </div>
-          <Button text="Add to cart" />
+          <Button
+            text="Add to cart"
+            onClick={handleAddCart}
+          />
         </div>
       </article>
     </section>

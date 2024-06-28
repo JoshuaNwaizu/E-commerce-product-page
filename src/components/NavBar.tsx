@@ -1,16 +1,10 @@
-import React, { useState } from 'react';
+import { useShoes } from '../contexts/ShoeContext';
 
 const navList: string[] = ['Collections', 'Men', 'Women', 'About', 'Contact'];
 
-type CartOpen = {
-  handleCartOpen: () => void;
-};
-const NavBar: React.FC<CartOpen> = ({ handleCartOpen }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const handleToggleNav = () => {
-    setIsOpen((open) => !open);
-  };
+const NavBar: React.FC = () => {
+  const { cartItems, isOpen, handleToggleNav, handleCartOpen, addCart } =
+    useShoes();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-10 bg-[#fff]">
@@ -66,6 +60,12 @@ const NavBar: React.FC<CartOpen> = ({ handleCartOpen }) => {
         </div>
         <div className="flex items-center gap-5">
           <span onClick={handleCartOpen}>
+            {addCart && (
+              <span className="absolute top-5 right-[3.5rem] bg-[#FF7D1B] px-2 rounded-xl text-[#fff] text-[.8rem]">
+                {cartItems.length}
+              </span>
+            )}
+
             <img
               src="/assets/icon-cart.svg"
               alt="cart logo"
