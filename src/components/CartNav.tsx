@@ -10,9 +10,9 @@ const CartNav: React.FC = () => {
 
   return (
     <section
-      className={`bg-[#fff] shadow-md fixed ${
-        cartOpen ? 'top-[6rem]' : 'top-[-100%]'
-      }  z-10 right-0 left-0 mx-2 py-[2rem] px-6 flex flex-col justify-center gap-[2rem] rounded-lg`}
+      className={`bg-[#fff] shadow-lg fixed ${
+        cartOpen ? 'top-[6rem] min-[768px]:top-[5rem]' : 'top-[-100%]'
+      }  z-10 right-0 max-sm:left-0 mx-2 py-[2rem] px-6 flex flex-col justify-center gap-[2rem] rounded-lg`}
     >
       <div className="flex flex-col gap-4">
         <h1 className="text-[1.2rem] font-bold">Cart</h1>
@@ -56,7 +56,7 @@ const CartNav: React.FC = () => {
           ))}
         </>
       ) : (
-        <span className="flex items-center justify-center my-[3rem] ">
+        <span className="flex items-center justify-center my-[4rem] min-[768px]:mx-[5.5rem]">
           <p className="font-bold text-[#6B6E74]">Your cart is empty.</p>
         </span>
       )}
