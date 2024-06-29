@@ -1,8 +1,7 @@
 import CartNav from './components/CartNav';
-import ImageDisplay from './components/ImageDisplay';
-import Info from './components/Info';
 import Modal from './components/Modal';
 import NavBar from './components/NavBar';
+import PageInfo from './components/PageInfo';
 import { ModalProvider } from './contexts/ImageContext';
 import { ShoeProvider } from './contexts/ShoeContext';
 
@@ -11,11 +10,10 @@ const App = () => {
     <ShoeProvider>
       <ModalProvider>
         {' '}
-        <main>
+        <main className="">
           <NavBar />
           <CartNav />
-          <ImageDisplay />
-          <Info />
+          <PageInfo />
           <Modal />
         </main>
       </ModalProvider>

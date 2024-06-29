@@ -8,10 +8,10 @@ const NavBar: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-10 bg-[#fff]">
-      <nav className="flex flex-row items-center justify-between mx-5 h-[5rem] min-[768px]:gap-5 min-[768px]:mx-[4rem]">
+      <nav className="flex flex-row items-center justify-between mx-5 h-[5rem] min-[601px]:gap-5 min-[601px]:mx-[4rem] min-[1100px]:mx-[6rem] ">
         <div className="flex flex-row gap-4 r">
           <span
-            className="cursor-pointer min-[768px]:hidden"
+            className="cursor-pointer min-[601px]:hidden"
             onClick={handleToggleNav}
           >
             <img
@@ -27,19 +27,19 @@ const NavBar: React.FC = () => {
             />
           </span>
           <div
-            className={`max-sm:w-[100svw] bg-[#0000009e] max-sm:left-0 top-0 max-sm:h-[100svh] max-sm:absolute  ${
+            className={`max-sm:w-[100svw] bg-[#0000009e] max-sm:left-0 top-0 max-sm:h-[100vh] max-sm:absolute  ${
               isOpen ? 'max-sm:block' : 'max-sm:hidden'
             }`}
           >
             <div
-              className={` max-sm:absolute bg-[#fff] max-sm:w-[70svw] max-sm:left-0 top-0 max-sm:h-[100svh] flex max-sm:flex-col transition-all duration-300 min-[1100px]:flex-row ${
+              className={` max-sm:absolute bg-[#fff] max-sm:w-[70svw] max-sm:left-0 top-0 max-sm:h-[100vh] flex max-sm:flex-col transition-all duration-300 min-[1100px]:flex-row ${
                 isOpen ? 'max-sm:left-0' : 'max-sm:left-[-100%]'
               }`}
             >
               <span className="absolute top-[2rem] ml-6 flex flex-col gap-[3rem]">
                 <span
                   onClick={handleToggleNav}
-                  className="cursor-pointer  min-[768px]:hidden"
+                  className="cursor-pointer  min-[601px]:hidden"
                 >
                   <img
                     src="/assets/icon-close.svg"
@@ -47,11 +47,11 @@ const NavBar: React.FC = () => {
                     className="cursor-pointer"
                   />
                 </span>
-                <ul className="flex flex-col gap-5  min-[768px]:flex-row min-[768px]:gap-4">
+                <ul className="flex flex-col gap-5  min-[601px]:flex-row min-[601px]:gap-4">
                   {navList.map((list) => (
                     <li
                       key={list}
-                      className="text-[1.1rem] font-bold cursor-pointer min-[768px]:text-[#6B6E74]"
+                      className="text-[1.1rem] font-bold cursor-pointer min-[601px]:text-[#6B6E74]"
                     >
                       {list}
                     </li>

@@ -11,19 +11,19 @@ const ImageDisplay = () => {
   } = useModal();
 
   return (
-    <section className=" flex flex-row gap-3 min-[768px]:item-center min-[768px]:justify-center min-[768px]:mt-[7rem]">
+    <section className=" flex flex-row gap-3 min-[601px]:item-center min-[601px]:justify-center min-[601px]:mt-[7rem] min-[1100px]:flex-col min-[1100px]:w-[50svw] min-[1100px]:mt-0">
       <article
         className="max-[600px]:mt-[3.5rem] relative  "
         onClick={handleToggleModal}
       >
-        <figure className="min-[768px]:flex min-[768px]:item-center min-[768px]:justify-center">
+        <figure className="min-[601px]:flex min-[601px]:item-center min-[601px]:justify-center ">
           <img
             src={shoeData.imageSelect}
             alt={shoeData.alt}
-            className="h-[100svw] w-[100svw] min-[768px]:h-[35rem] min-[768px]:w-[35rem] min-[768px]:rounded-[1rem]"
+            className="h-[100svw] w-[100svw] min-[601px]:h-[35rem] min-[601px]:w-[35rem] min-[601px]:rounded-[1rem] min-[1100px]:w-[28rem] min-[1100px]:h-[28rem] cursor-pointer"
           />
         </figure>
-        <div className="flex absolute top-[44%] items-center justify-between w-[100svw] px-4 min-[768px]:hidden">
+        <div className="flex absolute top-[44%] items-center justify-between w-[100svw] px-4 min-[601px]:hidden">
           <button
             className="bg-[white] px-[1rem] py-[.9rem] rounded-full"
             onClick={handleBackward}
@@ -46,16 +46,17 @@ const ImageDisplay = () => {
           </button>
         </div>
       </article>
-      <ul className="flex flex-col items-center justify-center gap-2 max-[600px]:hidden">
+      <ul className="flex flex-col items-center justify-center gap-2 max-[600px]:hidden min-[1100px]:flex-row min-[1100px]:gap-[1.8rem]">
         {image.map((item, i) => (
           <li
             key={item.alt}
             onClick={() => handleImgClick(i)}
+            className="cursor-pointer"
           >
             <img
               src={item.imageThumbnail}
               alt={item.alt}
-              className="w-[8.3rem] min-[768px]:rounded-[1rem]"
+              className="w-[8.3rem] min-[601px]:rounded-[.8rem] min-[1100px]:w-[5.5rem]"
             />
           </li>
         ))}
