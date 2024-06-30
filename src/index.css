@@ -11,8 +11,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+ }
+ 
+@media screen and (min-width: 1024px) {
+  *{
+    overflow-y: hidden;
+  }
+  body {
+   display: flex;
+   justify-content: center;
+   overflow-x: hidden;
+  }
+  
 }
 

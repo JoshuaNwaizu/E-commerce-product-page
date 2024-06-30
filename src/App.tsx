@@ -10,7 +10,7 @@ const App = () => {
     <ShoeProvider>
       <ModalProvider>
         {' '}
-        <main className="">
+        <main className="flex items-center justify-center max-w-[1320px] ">
           <NavBar />
           <CartNav />
           <PageInfo />

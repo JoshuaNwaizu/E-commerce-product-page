@@ -16,7 +16,8 @@ interface Shoes {
 
 interface ImageContextType {
   handleForward: () => void;
-  modal: boolean
+  navigate: number;
+  modal: boolean;
   image: Shoes[];
   shoeData: Shoes;
   handleBackward: () => void;
@@ -57,7 +58,7 @@ const reducer: React.Reducer<NavigateState, NavigateAction> = (
 
 const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [modal, setIsModal] = useState<boolean>(false)
+  const [modal, setIsModal] = useState<boolean>(false);
   const { navigate } = state;
 
   const shoeData = IMAGES_DATA[navigate];
@@ -70,9 +71,9 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
     }
   };
 
-  const handleToggleModal = ()=> {
-    setIsModal(modal => !modal)
-  }
+  const handleToggleModal = () => {
+    setIsModal((modal) => !modal);
+  };
 
   const handleBackward = () => {
     dispatch({ type: 'BACKWARD_NAV' });
@@ -88,7 +89,16 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
 
   return (
     <ModalContext.Provider
-      value={{ image, shoeData, handleForward, handleBackward, handleImgClick, modal, handleToggleModal }}
+      value={{
+        image,
+        shoeData,
+        handleForward,
+        handleBackward,
+        handleImgClick,
+        modal,
+        handleToggleModal,
+        navigate,
+      }}
     >
       {children}
     </ModalContext.Provider>

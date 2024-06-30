@@ -5,16 +5,16 @@ const Info = () => {
   const { count, handleItemAdd, handleItemMinus, handleAddCart } = useShoes();
 
   return (
-    <section className="mx-6 my-[2rem] min-[768px]:mx-[3rem] min-[1100px]:flex min-[1100px]:justify-center min-[1100px]:w-[40svw] min-[1100px]:my-0 min-[1100px]:mx-0">
+    <section className="mx-6 my-[2rem] min-[768px]:mx-[3rem] min-[1100px]:flex min-[1100px]:justify-center min-[1100px]:w-[40svw] min-[1100px]:my-0 min-[1100px]:mx-0  ">
       <article className="flex flex-col gap-6  min-[1100px]:justify-center min-[1100px]:gap-[2rem]">
         <h2 className="flex flex-col gap-4">
-          <span className="text-[#6B6E74] uppercase tracking-widest font-bold text-[12px] min-[768px]:text-center min-[768px]:text-[1.2rem] min-[1100px]:text-left">
+          <span className="text-[#6B6E74] uppercase tracking-widest font-bold text-[12px] min-[768px]:text-center min-[768px]:text-[1.1rem] min-[1100px]:text-left">
             Sneaker Company
           </span>
-          <span className="text-[#1E2023] text-3xl font-bold min-[768px]:text-center min-[768px]:text-4xl min-[1100px]:text-left">
+          <span className="text-[#1E2023] text-3xl font-bold min-[768px]:text-center min-[768px]:text-3xl min-[1100px]:text-left min-[1100px]:overflow-y-hidden">
             Fall Limited Edition Sneakers
           </span>
-          <span className="text-[#6B6E74] min-[768px]:text-center min-[768px]:text-[1.2rem] min-[1100px]:text-left">
+          <span className="text-[#6B6E74] min-[768px]:text-center min-[768px]:text-[1.1rem] min-[1100px]:text-left">
             These low-profile sneakers are your perfect casual wear companion.
             Featuring a durable rubber outer sole, they’ll withstand everything
             the weather can offer.
