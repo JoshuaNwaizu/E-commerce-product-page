@@ -5,6 +5,7 @@ const Modal = () => {
   const {
     shoeData,
     image,
+    navigate,
     handleBackward,
     handleForward,
     handleImgClick,
@@ -60,12 +61,20 @@ const Modal = () => {
             <li
               key={item.alt}
               onClick={() => handleImgClick(i)}
+              className={` relative group min-[601px]:rounded-[1rem] ${
+                navigate === i && ' border-[#FF7D1B] border-[.17rem]'
+              }`}
             >
               <img
                 src={item.imageThumbnail}
                 alt={item.alt}
                 className="w-[8.3rem] rounded-[1rem] min-[1100px]:w-[5.5rem]"
               />
+              <div
+                className={`absolute inset-0 transition-opacity bg-[#fff7ec] opacity-0 group-hover:opacity-50 ${
+                  navigate === i && 'inset-0 opacity-50 bg-[#fff7ec] '
+                }`}
+              ></div>
             </li>
           ))}
         </ul>

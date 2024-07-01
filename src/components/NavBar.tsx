@@ -64,7 +64,7 @@ const NavBar: React.FC = () => {
         <div className="flex items-center gap-5">
           <span onClick={handleCartOpen}>
             {addCart && (
-              <span className="absolute top-5 right-[3.5rem] bg-[#FF7D1B] px-2 rounded-xl text-[#fff] text-[.8rem] min-[768px]:right-[6.5rem] min-[1100px]:right-[10.5rem]">
+              <span className="absolute top-5 right-[3.7rem] bg-[#FF7D1B] px-2 rounded-xl text-[#fff] text-[.8rem] min-[768px]:right-[6.5rem] min-[1100px]:right-[10.5rem]">
                 {cartItems.length}
               </span>
             )}

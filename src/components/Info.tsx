@@ -11,7 +11,7 @@ const Info = () => {
           <span className="text-[#6B6E74] uppercase tracking-widest font-bold text-[12px] min-[768px]:text-center min-[768px]:text-[1.1rem] min-[1100px]:text-left">
             Sneaker Company
           </span>
-          <span className="text-[#1E2023] text-3xl font-bold min-[768px]:text-center min-[768px]:text-3xl min-[1100px]:text-left min-[1100px]:overflow-y-hidden">
+          <span className="text-[#1E2023] text-3xl font-bold min-[768px]:text-center min-[768px]:text-3xl min-[1100px]:text-left">
             Fall Limited Edition Sneakers
           </span>
           <span className="text-[#6B6E74] min-[768px]:text-center min-[768px]:text-[1.1rem] min-[1100px]:text-left">
