@@ -57,7 +57,15 @@ const reducer: React.Reducer<StateType, ActionType> = (state, action) => {
     case 'OPEN_NAV':
       return { ...state, isOpen: !state.isOpen };
     case 'ADD_CART':
-      return { ...state, addCart: false };
+      return { ...state, addCart: true };
+    case 'RESET':
+      return {
+        ...state,
+        count: 0,
+        cartOpen: false,
+        isOpen: false,
+        addCart: false,
+      };
     default:
       console.error('Err');
       return state;
@@ -71,7 +79,7 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
   // const [addCart, setAddCart] = useState<boolean>(false);
 
   const handleAddCart = () => {
-    dispatch({ type: 'ADD' });
+    dispatch({ type: 'ADD_CART' });
     if (state.count > 0) {
       state.addCart = true;
     }
@@ -99,8 +107,7 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
   };
 
   const handleDelete = () => {
-    state.addCart = false;
-    state.count = 0;
+    dispatch({ type: 'RESET' });
   };
   const handleCheckout = () => {
     handleCartOpen();
