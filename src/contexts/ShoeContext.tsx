@@ -57,7 +57,7 @@ const reducer: React.Reducer<StateType, ActionType> = (state, action) => {
     case 'OPEN_NAV':
       return { ...state, isOpen: !state.isOpen };
     case 'ADD_CART':
-      return { ...state, addCart: !state.addCart };
+      return { ...state, addCart: true };
     case 'RESET':
       return {
         ...state,
@@ -79,10 +79,8 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
   // const [addCart, setAddCart] = useState<boolean>(false);
 
   const handleAddCart = () => {
-    dispatch({ type: 'ADD_CART' });
-
     if (state.count > 0) {
-      state.addCart = false;
+      dispatch({ type: 'ADD_CART' });
     }
   };
 
