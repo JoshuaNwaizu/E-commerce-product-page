@@ -23,11 +23,14 @@ interface ImageContextType {
   handleBackward: () => void;
   handleImgClick: (num: number) => void;
   handleToggleModal: () => void;
+  nav: number;
+  handleChangeNav: (num: number) => void;
 }
 const ModalContext = createContext<ImageContextType | undefined>(undefined);
 
 interface NavigateState {
   navigate: number;
+  nav: number;
 }
 
 interface NavigateAction {
@@ -35,7 +38,7 @@ interface NavigateAction {
   payload?: any;
 }
 
-const initialState = { navigate: 0 };
+const initialState = { navigate: 0, nav: 0 };
 const image = IMAGES_DATA;
 
 const reducer: React.Reducer<NavigateState, NavigateAction> = (
@@ -50,6 +53,8 @@ const reducer: React.Reducer<NavigateState, NavigateAction> = (
       return { ...state, navigate: state.navigate - 1 };
     case 'SET_NAVIGATE':
       return { ...state, navigate: action.payload };
+    case 'NAV_CLICK':
+      return { ...state, nav: action.payload };
     default:
       console.error('Err');
       return state;
@@ -59,7 +64,7 @@ const reducer: React.Reducer<NavigateState, NavigateAction> = (
 const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [modal, setIsModal] = useState<boolean>(false);
-  const { navigate } = state;
+  const { navigate, nav } = state;
 
   const shoeData = IMAGES_DATA[navigate];
 
@@ -86,6 +91,10 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
   const handleImgClick = (num: number) => {
     dispatch({ type: 'SET_NAVIGATE', payload: num });
   };
+  const handleChangeNav = (num: number) => {
+    dispatch({ type: 'NAV_CLICK', payload: num });
+    console.log(nav);
+  };
 
   return (
     <ModalContext.Provider
@@ -98,6 +107,8 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
         modal,
         handleToggleModal,
         navigate,
+        nav,
+        handleChangeNav,
       }}
     >
       {children}

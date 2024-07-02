@@ -1,10 +1,12 @@
 import { useShoes } from '../contexts/ShoeContext';
+import { useModal } from '../contexts/ImageContext';
 
 const navList: string[] = ['Collections', 'Men', 'Women', 'About', 'Contact'];
 
 const NavBar: React.FC = () => {
   const { cartItems, isOpen, handleToggleNav, handleCartOpen, addCart } =
     useShoes();
+  const { nav, handleChangeNav } = useModal();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-10 bg-[#fff]    ">
@@ -48,10 +50,15 @@ const NavBar: React.FC = () => {
                   />
                 </span>
                 <ul className="flex flex-col gap-5  min-[601px]:flex-row min-[601px]:gap-4">
-                  {navList.map((list) => (
+                  {navList.map((list, i) => (
                     <li
                       key={list}
-                      className="text-[1.1rem] font-medium cursor-pointer min-[601px]:text-[#6B6E74] hover:text-[#000]"
+                      onClick={() => handleChangeNav(i)}
+                      className={`text-[1.1rem] font-medium cursor-pointer min-[601px]:text-[#6B6E74] hover:text-[#000] min-[601px]:pb-[1rem] transition-all duration-150 ${
+                        nav === i
+                          ? ' min-[601px]:border-b-4 min-[601px]:border-[#FF7D1B]'
+                          : ''
+                      }`}
                     >
                       {list}
                     </li>
@@ -62,7 +69,10 @@ const NavBar: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-5">
-          <span onClick={handleCartOpen}>
+          <span
+            onClick={handleCartOpen}
+            className="cursor-pointer"
+          >
             {addCart && (
               <span className="absolute top-5 right-[3.7rem] bg-[#FF7D1B] px-2 rounded-xl text-[#fff] text-[.8rem] min-[768px]:right-[6.5rem] min-[1100px]:right-[10.5rem]">
                 {cartItems.length}

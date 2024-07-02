@@ -12,14 +12,18 @@ interface CartContextType {
   handleAddCart: () => void;
   cartItems: CartNav[];
   handleDelete: () => void;
+  handleCheckout: () => void;
 }
 type ChildrenProps = { children: React.ReactNode };
 
 interface StateType {
   count: number;
+  cartOpen: boolean;
+  isOpen: boolean;
+  addCart: boolean;
 }
 interface ActionType {
-  type: 'ADD' | 'MINUS';
+  type: string;
 }
 
 interface CartNav {
@@ -36,34 +40,48 @@ const cartItems: CartNav[] = [
 
 const ShoeContext = createContext<CartContextType | undefined>(undefined);
 
-const initialState = { count: 0 };
+const initialState = {
+  count: 0,
+  cartOpen: false,
+  isOpen: false,
+  addCart: false,
+};
 const reducer: React.Reducer<StateType, ActionType> = (state, action) => {
   switch (action.type) {
     case 'ADD':
       return { ...state, count: state.count + 1 };
     case 'MINUS':
       return { ...state, count: Math.max(state.count - 1, 0) };
+    case 'CART_OPEN':
+      return { ...state, cartOpen: !state.cartOpen };
+    case 'OPEN_NAV':
+      return { ...state, isOpen: !state.isOpen };
+    case 'ADD_CART':
+      return { ...state, addCart: true };
+    default:
+      console.error('Err');
+      return state;
   }
 };
 
 const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
-  const [cartOpen, setCartOpen] = useState<boolean>(false);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { count } = state;
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { count, cartOpen, isOpen } = state;
+
   const [addCart, setAddCart] = useState<boolean>(false);
 
   const handleAddCart = () => {
     if (state.count > 0) {
       setAddCart(true);
+      // dispatch({ type: 'ADD' });
     }
   };
 
   const handleToggleNav = () => {
-    setIsOpen((open) => !open);
+    dispatch({ type: 'OPEN_NAV' });
 
-    if (!isOpen) {
-      setCartOpen(false);
+    if (!state.isOpen) {
+      state.cartOpen = false;
     }
   };
 
@@ -73,16 +91,20 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
 
   const handleItemMinus = () => {
     dispatch({ type: 'MINUS' });
-    if (count === 1) setAddCart((open) => !open);
+    if (state.count === 1) setAddCart((open) => !open);
   };
 
   const handleCartOpen = () => {
-    setCartOpen((open) => !open);
+    dispatch({ type: 'CART_OPEN' });
   };
 
   const handleDelete = () => {
     setAddCart((cart) => !cart);
     state.count = 0;
+  };
+  const handleCheckout = () => {
+    handleCartOpen();
+    handleDelete();
   };
 
   return (
@@ -99,6 +121,7 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
         handleAddCart,
         cartItems,
         handleDelete,
+        handleCheckout,
       }}
     >
       {children}

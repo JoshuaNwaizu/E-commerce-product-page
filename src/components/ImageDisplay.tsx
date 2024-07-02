@@ -12,7 +12,7 @@ const ImageDisplay = () => {
   } = useModal();
 
   return (
-    <section className=" flex flex-row gap-3 min-[601px]:item-center min-[601px]:justify-center min-[601px]:mt-[7rem] min-[1100px]:flex-col min-[1100px]:w-[50svw] min-[1100px]:mt-0 min-[1100px]:gap-[1rem]  max-w-[800px]">
+    <section className=" flex flex-row gap-3 min-[601px]:item-center min-[601px]:justify-center min-[601px]:mt-[7rem] min-[1100px]:flex-col min-[1100px]:w-[50svw] min-[1100px]:mt-0 min-[1100px]:gap-[1rem]  min-[1100px]:max-w-[800px]">
       <article
         className="max-[600px]:mt-[3.5rem] relative  "
         onClick={handleToggleModal}

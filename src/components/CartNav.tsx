@@ -6,7 +6,8 @@ import Button from './Button';
 import React from 'react';
 
 const CartNav: React.FC = () => {
-  const { count, addCart, cartOpen, cartItems, handleDelete } = useShoes();
+  const { count, addCart, cartOpen, cartItems, handleDelete, handleCheckout } =
+    useShoes();
 
   return (
     <section
@@ -46,12 +47,15 @@ const CartNav: React.FC = () => {
                   </div>
 
                   <TfiTrash
-                    className="text-2xl text-[#6B6E74]"
+                    className="text-2xl text-[#6B6E74] cursor-pointer"
                     onClick={handleDelete}
                   />
                 </h2>
               </div>
-              <Button text="Checkout" />
+              <Button
+                text="Checkout"
+                onClick={handleCheckout}
+              />
             </>
           ))}
         </>
