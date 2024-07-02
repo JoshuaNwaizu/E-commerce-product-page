@@ -1,5 +1,5 @@
 // import React from 'react'
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import { IMAGES_DATA } from '../shoes';
 
 import React, { createContext, useContext } from 'react';
@@ -31,6 +31,7 @@ const ModalContext = createContext<ImageContextType | undefined>(undefined);
 interface NavigateState {
   navigate: number;
   nav: number;
+  modal: boolean;
 }
 
 interface NavigateAction {
@@ -38,7 +39,7 @@ interface NavigateAction {
   payload?: any;
 }
 
-const initialState = { navigate: 0, nav: 0 };
+const initialState = { navigate: 0, nav: 0, modal: false };
 const image = IMAGES_DATA;
 
 const reducer: React.Reducer<NavigateState, NavigateAction> = (
@@ -55,16 +56,18 @@ const reducer: React.Reducer<NavigateState, NavigateAction> = (
       return { ...state, navigate: action.payload };
     case 'NAV_CLICK':
       return { ...state, nav: action.payload };
+    case 'MODAL':
+      return { ...state, modal: !state.modal };
+
     default:
-      console.error('Err');
+      console.error('No state present in ImageContext component');
       return state;
   }
 };
 
 const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [modal, setIsModal] = useState<boolean>(false);
-  const { navigate, nav } = state;
+  const { navigate, nav, modal } = state;
 
   const shoeData = IMAGES_DATA[navigate];
 
@@ -77,7 +80,7 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
   };
 
   const handleToggleModal = () => {
-    setIsModal((modal) => !modal);
+    dispatch({ type: 'MODAL' });
   };
 
   const handleBackward = () => {

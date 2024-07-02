@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useState } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 
 interface CartContextType {
   cartOpen: boolean;
@@ -57,7 +57,7 @@ const reducer: React.Reducer<StateType, ActionType> = (state, action) => {
     case 'OPEN_NAV':
       return { ...state, isOpen: !state.isOpen };
     case 'ADD_CART':
-      return { ...state, addCart: true };
+      return { ...state, addCart: false };
     default:
       console.error('Err');
       return state;
@@ -66,14 +66,14 @@ const reducer: React.Reducer<StateType, ActionType> = (state, action) => {
 
 const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { count, cartOpen, isOpen } = state;
+  const { count, cartOpen, isOpen, addCart } = state;
 
-  const [addCart, setAddCart] = useState<boolean>(false);
+  // const [addCart, setAddCart] = useState<boolean>(false);
 
   const handleAddCart = () => {
+    dispatch({ type: 'ADD' });
     if (state.count > 0) {
-      setAddCart(true);
-      // dispatch({ type: 'ADD' });
+      state.addCart = true;
     }
   };
 
@@ -91,7 +91,7 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
 
   const handleItemMinus = () => {
     dispatch({ type: 'MINUS' });
-    if (state.count === 1) setAddCart((open) => !open);
+    if (state.count === 1) state.addCart = false;
   };
 
   const handleCartOpen = () => {
@@ -99,7 +99,7 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
   };
 
   const handleDelete = () => {
-    setAddCart((cart) => !cart);
+    state.addCart = false;
     state.count = 0;
   };
   const handleCheckout = () => {

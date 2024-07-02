@@ -1,9 +1,8 @@
-// import React from 'react';
+import React from 'react';
 import { TfiTrash } from 'react-icons/tfi';
 import { useShoes } from '../contexts/ShoeContext';
 
 import Button from './Button';
-import React from 'react';
 
 const CartNav: React.FC = () => {
   const { count, addCart, cartOpen, cartItems, handleDelete, handleCheckout } =
