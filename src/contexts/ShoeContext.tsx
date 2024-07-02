@@ -90,6 +90,11 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
     if (!state.isOpen) {
       state.cartOpen = false;
     }
+    if (!state.isOpen) {
+      return (document.body.style.overflow = 'hidden');
+    } else {
+      return (document.body.style.overflow = '');
+    }
   };
 
   const handleItemAdd = () => {

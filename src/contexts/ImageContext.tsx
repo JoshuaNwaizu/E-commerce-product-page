@@ -81,6 +81,11 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
 
   const handleToggleModal = () => {
     dispatch({ type: 'MODAL' });
+    if (!state.modal) {
+      return (document.body.style.overflow = 'hidden');
+    } else {
+      return (document.body.style.overflow = '');
+    }
   };
 
   const handleBackward = () => {

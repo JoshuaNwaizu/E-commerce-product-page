@@ -14,7 +14,7 @@ const Modal = () => {
   } = useModal();
   return (
     <section
-      className={` max-[600px]:hidden absolute top-0 bottom-0 h-[100svh] w-[100svw] z-10 bg-[#2a2a2ae1] flex flex-col items-center justify-center gap-2 overflow-y-hidden ${
+      className={` max-[600px]:hidden absolute top-0 bottom-0 h-[100svh] w-[100svw] z-10 bg-[#2a2a2ae1] flex flex-col items-center justify-center gap-2 min-[1100px]:overflow-y-hidden ${
         !modal ? 'hidden' : 'flex'
       }`}
     >
