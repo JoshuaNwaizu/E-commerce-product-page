@@ -74,7 +74,7 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
   const handleForward = () => {
     dispatch({ type: 'FORWARD_NAV' });
 
-    if (state.navigate === 3) {
+    if (navigate === 3) {
       state.navigate = navigate - 4;
     }
   };
@@ -91,7 +91,7 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
   const handleBackward = () => {
     dispatch({ type: 'BACKWARD_NAV' });
 
-    if (state.navigate === 0) {
+    if (navigate === 0) {
       state.navigate = navigate + 4;
     }
   };
