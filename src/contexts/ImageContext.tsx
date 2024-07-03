@@ -58,7 +58,6 @@ const reducer: React.Reducer<NavigateState, NavigateAction> = (
       return { ...state, nav: action.payload };
     case 'MODAL':
       return { ...state, modal: !state.modal };
-
     default:
       console.error('No state present in ImageContext component');
       return state;
@@ -80,22 +79,22 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
     console.log(navigate);
   };
 
-  const handleToggleModal = () => {
-    dispatch({ type: 'MODAL' });
-    const mediaQuery = window.matchMedia('(min-width: 1100px)');
-
-    if (mediaQuery.matches && !state.modal) {
-      return (document.body.style.overflow = 'hidden');
-    } else {
-      return (document.body.style.overflow = '');
-    }
-  };
-
   const handleBackward = () => {
     dispatch({ type: 'BACKWARD_NAV' });
 
     if (navigate === 0) {
       state.navigate = navigate + 4;
+    }
+  };
+
+  const handleToggleModal = () => {
+    dispatch({ type: 'MODAL' });
+    const mediaQuery = window.matchMedia('(min-width: 601px)');
+
+    if (mediaQuery.matches && !state.modal) {
+      return (document.body.style.overflow = 'hidden');
+    } else {
+      return (document.body.style.overflow = '');
     }
   };
 

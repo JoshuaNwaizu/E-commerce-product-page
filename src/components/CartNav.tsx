@@ -5,8 +5,7 @@ import { useShoes } from '../contexts/ShoeContext';
 import Button from './Button';
 
 const CartNav: React.FC = () => {
-  const { count, addCart, cartOpen, cartItems, handleDelete, handleCheckout } =
-    useShoes();
+  const { count, addCart, cartOpen, cartItems, handleDelete } = useShoes();
 
   return (
     <section
@@ -53,7 +52,7 @@ const CartNav: React.FC = () => {
               </div>
               <Button
                 text="Checkout"
-                onClick={handleCheckout}
+                onClick={handleDelete}
               />
             </>
           ))}

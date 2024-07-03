@@ -9,7 +9,6 @@ const App = () => {
   return (
     <ShoeProvider>
       <ModalProvider>
-        {' '}
         <main className="flex items-center justify-center max-w-[1320px] ">
           <NavBar />
           <CartNav />

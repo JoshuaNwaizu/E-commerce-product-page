@@ -12,8 +12,8 @@ interface CartContextType {
   handleAddCart: () => void;
   cartItems: CartNav[];
   handleDelete: () => void;
-  handleCheckout: () => void;
 }
+
 type ChildrenProps = { children: React.ReactNode };
 
 interface StateType {
@@ -63,11 +63,10 @@ const reducer: React.Reducer<StateType, ActionType> = (state, action) => {
         ...state,
         count: 0,
         cartOpen: false,
-        isOpen: false,
         addCart: false,
       };
     default:
-      console.error('Err');
+      console.error('No state present in ImageContext component');
       return state;
   }
 };
@@ -75,8 +74,6 @@ const reducer: React.Reducer<StateType, ActionType> = (state, action) => {
 const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { count, cartOpen, isOpen, addCart } = state;
-
-  // const [addCart, setAddCart] = useState<boolean>(false);
 
   const handleAddCart = () => {
     if (state.count > 0) {
@@ -113,10 +110,6 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
   const handleDelete = () => {
     dispatch({ type: 'RESET' });
   };
-  const handleCheckout = () => {
-    handleCartOpen();
-    handleDelete();
-  };
 
   return (
     <ShoeContext.Provider
@@ -132,7 +125,6 @@ const ShoeProvider: React.FC<ChildrenProps> = ({ children }) => {
         handleAddCart,
         cartItems,
         handleDelete,
-        handleCheckout,
       }}
     >
       {children}
