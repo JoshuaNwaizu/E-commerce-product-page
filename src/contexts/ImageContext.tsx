@@ -82,7 +82,7 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
 
   const handleToggleModal = () => {
     dispatch({ type: 'MODAL' });
-    const mediaQuery = window.matchMedia('(max-width: 1100px)');
+    const mediaQuery = window.matchMedia('(min-width: 1100px)');
 
     if (mediaQuery.matches && !state.modal) {
       return (document.body.style.overflow = 'hidden');
