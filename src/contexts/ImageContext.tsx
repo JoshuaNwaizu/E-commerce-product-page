@@ -77,11 +77,14 @@ const ModalProvider: React.FC<ChildrenProps> = ({ children }) => {
     if (navigate === 3) {
       state.navigate = navigate - 4;
     }
+    console.log(navigate);
   };
 
   const handleToggleModal = () => {
     dispatch({ type: 'MODAL' });
-    if (!state.modal) {
+    const mediaQuery = window.matchMedia('(max-width: 1100px)');
+
+    if (mediaQuery.matches && !state.modal) {
       return (document.body.style.overflow = 'hidden');
     } else {
       return (document.body.style.overflow = '');
