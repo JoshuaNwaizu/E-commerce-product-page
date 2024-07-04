@@ -18,12 +18,12 @@ const Modal = () => {
         !modal ? 'min-[601px]:hidden' : 'min-[601px]:flex'
       }`}
     >
-      <span
+      <button
         className="text-[#FF7D1B] text-4xl translate-x-[12rem] min-[1100px]:translate-x-[14rem]"
         onClick={handleToggleModal}
       >
         <IoCloseSharp />
-      </span>
+      </button>
       <div className="  flex flex-row gap-3 item-center justify-center  min-[1100px]:flex-col min-[1100px]:mt-0">
         <article className="max-[600px]:mt-[3.5rem] relative  ">
           <figure className="flex justify-center item-center">

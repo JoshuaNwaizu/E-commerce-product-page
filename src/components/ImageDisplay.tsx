@@ -61,11 +61,11 @@ const ImageDisplay = () => {
               alt={item.alt}
               className="w-[8.3rem] min-[601px]:rounded-[.8rem] min-[1100px]:w-[5rem]"
             />
-            <div
-              className={`absolute inset-0 transition-opacity bg-[#fff7ec] opacity-0 group-hover:opacity-50 ${
+            <span
+              className={`absolute inset-0 transition-opacity bg-[#fff7ec] opacity-0 group-hover:opacity-50 min-[601px]:rounded-[.9rem] ${
                 navigate === i && 'inset-0 opacity-50 bg-[#fff7ec] '
               }`}
-            ></div>
+            ></span>
           </li>
         ))}
       </ul>
