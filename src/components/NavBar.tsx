@@ -4,7 +4,7 @@ import { useModal } from '../contexts/ImageContext';
 const navList: string[] = ['Collections', 'Men', 'Women', 'About', 'Contact'];
 
 const NavBar: React.FC = () => {
-  const { cartItems, isOpen, handleToggleNav, handleCartOpen, addCart } =
+  const { cartItems, isOpen, handleToggleNav, handleCartOpen, addCart, count } =
     useShoes();
   const { nav, handleChangeNav } = useModal();
 
@@ -75,7 +75,7 @@ const NavBar: React.FC = () => {
           >
             {addCart && (
               <span className="absolute top-5 right-[3.7rem] bg-[#FF7D1B] px-2 rounded-xl text-[#fff] text-[.8rem] min-[768px]:right-[6.5rem] min-[1100px]:right-[10.5rem]">
-                {cartItems.length}
+                {count}
               </span>
             )}
 
