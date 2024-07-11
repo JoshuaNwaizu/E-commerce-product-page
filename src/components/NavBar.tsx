@@ -4,7 +4,7 @@ import { useModal } from '../contexts/ImageContext';
 const navList: string[] = ['Collections', 'Men', 'Women', 'About', 'Contact'];
 
 const NavBar: React.FC = () => {
-  const { cartItems, isOpen, handleToggleNav, handleCartOpen, addCart, count } =
+  const { isOpen, handleToggleNav, handleCartOpen, addCart, count } =
     useShoes();
   const { nav, handleChangeNav } = useModal();
 
