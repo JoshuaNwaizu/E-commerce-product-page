@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
                     <li
                       key={list}
                       onClick={() => handleChangeNav(i)}
-                      className={`text-[1.1rem] font-medium cursor-pointer min-[601px]:text-[#6B6E74] hover:text-[#000] min-[601px]:pb-[1rem] transition-all duration-150 ${
+                      className={`text-[1.1rem] font-medium cursor-pointer min-[601px]:text-[#6B6E74] min-[601px]:hover:text-[#000] max-[600px]:hover:text-[#6B6E74] min-[601px]:pb-[1rem] transition-all duration-150 ${
                         nav === i
                           ? ' min-[601px]:border-b-4 min-[601px]:border-[#FF7D1B]'
                           : ''
